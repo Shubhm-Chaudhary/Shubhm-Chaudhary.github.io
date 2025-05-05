@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubham Chaudhary | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+  <style>
+    /* Dark Mode Fixes */
+.dark body {
+  color: #e5e7eb; /* Light gray text */
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db !important; /* Lighter gray for secondary text */
+}
+
+.dark .project-card {
+  background-color: #1f2937; /* Darker card background */
+  color: #e5e7eb;
+}
+
+.dark .skill-bar-container {
+  background-color: #374151; /* Dark skill bar background */
+}
+
+.dark input,
+.dark textarea {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: #4b5563;
+}
+
+.dark pre {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark code {
+  color: #f3f4f6 !important;
+}
+
+.dark .testimonial-card {
+  background-color: #1f2937;
+}
+
+.dark .github-stats,
+.dark .github-stats img {
+  background-color: #1f2937 !important;
+}
+
+/* Existing other CSS */
+:root {
+  --primary: #2563EB;
+  --secondary: #10B981;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dark header {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.project-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skill-bar-container {
+  height: 6px;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 1.5s ease-in-out;
+}
+
+.testimonial-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  background-color: #0F172A;
+}
+
+.dark .dark\:bg-gray-800 {
+  background-color: #1E293B;
+}
+
+.dark .dark\:text-white {
+  color: #F8FAFC;
+}
+
+.dark .dark\:border-gray-700 {
+  border-color: #334155;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #68D391;
+}
+
+.toggle-checkbox:checked+.toggle-label {
+  background-color: #68D391;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 1rem;
+  }
+  .skills ul {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-blue-50 to-white text-gray-800 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200">
+
+  <header class="shadow-md py-6 px-4 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold gradient-text">Shubham Chaudhary</h1>
+      <div class="flex items-center space-x-6">
+        <nav class="space-x-4 text-blue-600 font-semibold dark:text-blue-400 hidden md:flex">
+          <a href="#about" class="hover:underline">About Me</a>
+          <a href="#education" class="hover:underline">Education</a>
+          <a href="#projects" class="hover:underline">Projects</a>
+          <a href="#certifications" class="hover:underline">Certifications</a>
+          <a href="#skills" class="hover:underline">Skills</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </nav>
+        <div class="relative inline-block w-12 mr-2 align-middle select-none">
+          <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+          <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-16 main-content">
+
+    <!-- About Me -->
+    <section id="about" class="text-center bg-blue-50 py-10 rounded-xl dark:bg-gray-800">
+      <div data-aos="zoom-in">
+        <h2 class="text-3xl font-bold gradient-text mb-4">About Me</h2>
+        <p class="text-lg max-w-2xl mx-auto">
+          Hello! I'm Shubham Chaudhary, a passionate technology enthusiast with a focus on Electronics and Embedded Systems. 
+          I'm have completed my Bachelor's in Technology in Electrical and Electronics Engineering and have hands-on experience in 
+          programming, hardware design, and IoT applications. I am continuously seeking to expand my skill set and take 
+          on challenging projects that make an impact.
+        </p>
+        <div class="mt-6 flex justify-center space-x-4">
+          <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all dark:bg-blue-700 dark:hover:bg-blue-800">
+            Contact Me
+          </a>
+          <a href="#" id="downloadResume" class="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition-all dark:border-blue-400 dark:text-blue-400 dark:hover:bg-gray-700">
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Education</h2>
+      <div class="bg-white p-6 shadow-md rounded-lg space-y-4 dark:bg-gray-800">
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <strong class="text-lg">Bachelor of Technology (EEE)</strong>, KIET Group of Institutions<br />
+          <span class="text-gray-600 dark:text-gray-300">I-DIV with Honours (7.66 CGPA), Nov 2020 – June 2024, Delhi NCR</span>
+        </div>
+        <div class="border-l-4 border-green-500 pl-4 py-2">
+          <strong class="text-lg">Senior Secondary (CBSE)</strong>, Holy Child Academy<br />
+          <span class="text-gray-600 dark:text-gray-300">87.6%, 2019 – 2020, Baghpat</span>
+        </div>
+        <div class="border-l-4 border-purple-500 pl-4 py-2">
+          <strong class="text-lg">Class 10 (CBSE)</strong>, DPS School<br />
+          <span class="text-gray-600 dark:text-gray-300">87%, 2017 – 2018, Baghpat</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Certifications</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-semibold mb-2">Manufacturing Process Technology</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Completed comprehensive training on modern manufacturing techniques</p>
+          <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center dark:bg-gray-700">
+            <span class="text-gray-400">Certificate Preview</span>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-semibold mb-2">Introduction to Embedded System Design</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Mastered fundamentals of embedded systems architecture</p>
+          <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center dark:bg-gray-700">
+            <span class="text-gray-400">Certificate Preview</span>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-semibold mb-2">Industry 4.0 and Industrial IoT</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Gained expertise in industrial IoT applications</p>
+          <iframe loading="lazy" src="https://drive.google.com/file/d/YOUR_PDF_ID1/preview" width="100%" height="300" class="rounded mt-4"></iframe>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-semibold mb-2">The Complete C Programming Course</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Advanced C programming skills certification</p>
+          <iframe loading="lazy" src="https://drive.google.com/file/d/YOUR_PDF_ID2/preview" width="100%" height="300" class="rounded mt-4"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Achievements</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <span class="flex-shrink-0 bg-blue-100 text-blue-800 p-1 rounded-full dark:bg-blue-900 dark:text-blue-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="ml-2">Completed B.Tech with First Division Honours (2024)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="flex-shrink-0 bg-blue-100 text-blue-800 p-1 rounded-full dark:bg-blue-900 dark:text-blue-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="ml-2">Secured 189th rank in KICCS-D-HACK event (Feb 2023)</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Programming & Software</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Python</span>
+                <span>90%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>C Programming</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Matlab/Simulink</span>
+                <span>80%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="80%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>AutoCAD/Altium</span>
+                <span>75%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Hardware & Tools</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Arduino/ESP32</span>
+                <span>88%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="88%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>PLC Programming</span>
+                <span>82%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="82%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>IoT Development</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Embedded Systems</span>
+                <span>87%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full skill-bar-container dark:bg-gray-700">
+                <div class="skill-bar-fill" data-width="87%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Projects</h2>
+      <div class="space-y-8">
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-bold mb-2">Vehicle Accident Detection and Rescue System</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">December 2023 – June 2024</p>
+          <p class="mb-4">An innovative system that detects vehicle accidents using multiple sensors and automatically notifies emergency services with precise location and accident details, significantly reducing response time.</p>
+          
+          <div class="mb-4">
+            <h4 class="font-semibold mb-2">Key Features:</h4>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>Multi-sensor fusion for accurate accident detection</li>
+              <li>GPS for precise location tracking</li>
+              <li>GSM module for emergency alerts</li>
+              <li>Low-power design for continuous operation</li>
+            </ul>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Arduino</span>
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm dark:bg-green-900 dark:text-green-200">IoT</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm dark:bg-purple-900 dark:text-purple-200">Sensors</span>
+            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm dark:bg-yellow-900 dark:text-yellow-200">Embedded C</span>
+          </div>
+          
+          <div class="mt-4">
+            <h4 class="font-semibold mb-2">Code Snippet:</h4>
+            <pre class="rounded-lg"><code class="language-c">
+// Accident detection algorithm
+void detectAccident() {
+  float impact = readAccelerometer();
+  float tilt = readGyroscope();
+  float sound = readMicrophone();
+  
+  if (impact > IMPACT_THRESHOLD || 
+      (tilt > TILT_THRESHOLD && sound > SOUND_THRESHOLD)) {
+    triggerEmergencyAlert();
+    sendLocationViaGSM();
+  }
+}
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 project-card">
+          <h3 class="text-xl font-bold mb-2">Dual Axis Solar Tracking System</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">July 2021 – September 2021</p>
+          <p class="mb-4">A solar tracking system that increases panel efficiency by 40% compared to fixed systems, using light sensors and servo motors to maintain optimal orientation to the sun throughout the day.</p>
+          
+          <div class="mb-4">
+            <h4 class="font-semibold mb-2">Technical Highlights:</h4>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>Dual-axis movement for maximum sun exposure</li>
+              <li>LDR sensor array for precise sun positioning</li>
+              <li>Energy-efficient servo motor control</li>
+              <li>Weather-resistant design</li>
+            </ul>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Arduino</span>
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm dark:bg-green-900 dark:text-green-200">Servo Motors</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm dark:bg-purple-900 dark:text-purple-200">LDR Sensors</span>
+            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm dark:bg-yellow-900 dark:text-yellow-200">Renewable Energy</span>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="bg-gray-100 rounded-lg overflow-hidden dark:bg-gray-700">
+              <img loading="lazy" src="https://raw.githubusercontent.com/yourusername/your-repository/main/images/solar-tracker.jpg" alt="Solar Tracker Prototype" class="w-full h-auto">
+            </div>
+            <div class="bg-gray-100 rounded-lg overflow-hidden dark:bg-gray-700">
+              <img loading="lazy" src="https://raw.githubusercontent.com/yourusername/your-repository/main/images/solar-circuit.jpg" alt="Circuit Diagram" class="w-full h-auto">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Stats -->
+    <section data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">My GitHub Activity</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
+          <img loading="lazy" src="https://github-readme-stats.vercel.app/api?username=Shubhm-Chaudhary&show_icons=true&theme=default" alt="GitHub Stats" class="w-full">
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
+          <img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shubhm-Chaudhary&layout=compact&theme=default" alt="Top Languages" class="w-full">
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Testimonials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 testimonial-card">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center dark:bg-blue-900">
+              <span class="text-xl font-semibold text-blue-800 dark:text-blue-200">DR</span>
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Dr. Rajesh Kumar</h4>
+              <p class="text-gray-600 text-sm dark:text-gray-300">Professor, KIET Group of Institutions</p>
+            </div>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 italic">"Shubham demonstrated exceptional problem-solving skills in his final year project. His accident detection system showed remarkable innovation and technical proficiency."</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 testimonial-card">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center dark:bg-green-900">
+              <span class="text-xl font-semibold text-green-800 dark:text-green-200">SK</span>
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold">Sanjay Mehta</h4>
+              <p class="text-gray-600 text-sm dark:text-gray-300">Hackathon Judge</p>
+            </div>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 italic">"Shubham's performance in KICCS-D-HACK was impressive. His ability to quickly prototype IoT solutions sets him apart from his peers."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 gradient-text">Let's Connect</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <p class="mb-4">Feel free to reach out for collaborations or just to say hello!</p>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mt-1 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div class="ml-3">
+                <h4 class="font-semibold">Email</h4>
+                <a href="mailto:shubhamchoudhary9312@gmail.com" class="text-blue-600 hover:underline dark:text-blue-400">shubhamchoudhary9312@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mt-1 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <div class="ml-3">
+                <h4 class="font-semibold">Phone</h4>
+                <a href="tel:+919871083920" class="text-blue-600 hover:underline dark:text-blue-400">+91 9871083920</a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mt-1 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <div class="ml-3">
+                <h4 class="font-semibold">Location</h4>
+                <p>Delhi NCR, India</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 flex space-x-4">
+            <a href="https://github.com/Shubhm-Chaudhary" class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition dark:bg-gray-700 dark:hover:bg-gray-600">
+              <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/shubhamchaudhary108/" class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition dark:bg-gray-700 dark:hover:bg-gray-600">
+              <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="https://twitter.com/Shubham02004" class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition dark:bg-gray-700 dark:hover:bg-gray-600">
+              <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+          <form action="https://formsubmit.co/34bdee4244166eb40783f11b366e28b6" method="POST" class="space-y-4">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://mentalmaths.live">
+
+            <div>
+              <label class="block mb-2 font-medium">Your Name</label>
+              <input type="text" name="name" required 
+                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600">
+            </div>
+
+            <div>
+              <label class="block mb-2 font-medium">Your Email</label>
+              <input type="email" name="email" required 
+                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600">
+            </div>
+
+            <div>
+              <label class="block mb-2 font-medium">Message</label>
+              <textarea name="message" rows="5" required 
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600"></textarea>
+            </div>
+
+            <button type="submit" 
+                    class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all dark:bg-blue-700 dark:hover:bg-blue-800 font-medium">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-blue-50 py-8 text-center text-sm dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-4 flex justify-center space-x-6">
+        <a href="https://github.com/Shubhm-Chaudhary" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/shubhamchaudhary108/" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="https://twitter.com/Shubham02004" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">
+        &copy; 2025 Shubham Chaudhary. All rights reserved.<br>
+        Built with ❤️ using HTML, CSS, and JavaScript
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  // Dark Mode Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('toggle');
+    const html = document.documentElement;
+    
+    // Initialize dark mode from localStorage
+    const isDark = localStorage.getItem('darkMode') === 'true';
+    html.classList.toggle('dark', isDark);
+    toggle.checked = isDark;
+
+    // Toggle dark mode
+    toggle.addEventListener('change', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('darkMode', html.classList.contains('dark'));
+    });
+
+    // Initialize AOS animations
+    AOS.init({
+      duration: 400,
+      once: true,
+      easing: 'ease-in-out'
+    });
+
+    // Animate skill bars
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    skillBars.forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      bar.style.width = width;
+    });
+
+    // Resume download tracking
+    document.getElementById('downloadResume').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Add analytics tracking here
+      window.location.href = 'path/to/resume.pdf';
+    });
+
+    // Initialize syntax highlighting
+    Prism.highlightAll();
+  });
+
+  // Force dark mode styles on iframe elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      iframe.contentWindow.document.documentElement.classList.toggle(
+        'dark', 
+        document.documentElement.classList.contains('dark')
+      );
+    });
+  });
+</script>
+</body>
+</html>
